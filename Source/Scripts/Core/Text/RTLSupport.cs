@@ -566,7 +566,7 @@ namespace FairyGUI
         // 是否中立方向字符
         private static bool _IsNeutrality(char uc)
         {
-            return (uc == ':' || uc == '：' || uc == ' ' || /*uc == '%' ||*/ uc == '+' || /*uc == '-' ||*/ uc == '\n' || uc == '\r' || uc == '\t' || uc == '@' ||
+            return (uc == ':' || uc == '：' || uc == ' ' || /*uc == '%' ||*/ /*uc == '+' ||*/ /*uc == '-' ||*/ uc == '\n' || uc == '\r' || uc == '\t' || uc == '@' ||
                 (uc >= 0x2600 && uc <= 0x27BF)); // 表情符号
         }
 
@@ -592,15 +592,20 @@ namespace FairyGUI
             {
                 eCType = DirectionType.LTR;
             }
-            else if (IsArabicLetter(uc) || uc == '-' || uc == '%')
+            else if (IsArabicLetter(uc) || uc == '+' || uc == '-' || uc == '%')
             {
                 eCType = DirectionType.RTL;
             }
             else if (_IsNeutrality(uc))    // 中立方向字符，方向就和上一个字符一样 [2018/3/24 16:03:27 --By aq_1000]
             {
-                if (ePre == DirectionType.UNKNOW)
+                if (ePre == DirectionType.UNKNOW || ePre == DirectionType.NEUTRAL)
                 {
-                    eCType = DirectionType.NEUTRAL;
+                    if (char.IsNumber(nextChar))    // 数字都是弱LTR方向符，开头中立字符后面紧跟着数字的话，中立字符方向算文本主方向 [IsDigit()只是0-9] [2018/12/20/ 16:32:32 by aq_1000]
+                    {
+                        eCType = BaseDirection;
+                    }
+                    else
+                        eCType = DirectionType.NEUTRAL;
                 }
                 else
                     eCType = ePre;
