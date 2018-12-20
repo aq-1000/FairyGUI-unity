@@ -315,7 +315,7 @@ namespace FairyGUI
                     }
                     sbN.Length = 0;
 
-                    item = _ProcessBracket(item);
+//                    item = _ProcessBracket(item);       // 文本主方向为LTR的话，括号不需要翻转 [2018/12/20/ 17:03:23 by aq_1000]
                     listFinal.Add(item);
                 }
                 else
@@ -586,7 +586,7 @@ namespace FairyGUI
 
             if (_IsBracket(uc) || _IsEndPunctuation(uc, nextChar))
             {
-                eCType = DirectionType.RTL;
+                eCType = BaseDirection;     // 括号和句末标点符号，方向根据文本主方向算 [2018/12/20/ 17:00:50 by aq_1000]
             }
             else if ((uni >= 0x660) && (uni <= 0x669))
             {
