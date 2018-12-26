@@ -275,7 +275,7 @@ namespace FairyGUI
             sbRep.Length = 0;
             sbN.Length = 0;
             int iReplace = 0;
-            DirectionType ePre = DirectionType.UNKNOW;
+            DirectionType ePre = DirectionType.LTR;
             char nextChar = '\0';
             for (int j = 0; j < source.Length; j++)
             {
@@ -385,7 +385,7 @@ namespace FairyGUI
             sbRep.Length = 0;
             sbN.Length = 0;
             int iReplace = 0;
-            DirectionType ePre = DirectionType.UNKNOW;
+            DirectionType ePre = DirectionType.RTL;
             char nextChar = '\0';
             for (int j = 0; j < source.Length; j++)
             {
@@ -586,7 +586,7 @@ namespace FairyGUI
 
             if (_IsBracket(uc) || _IsEndPunctuation(uc, nextChar))
             {
-                eCType = BaseDirection;     // 括号和句末标点符号，方向根据文本主方向算 [2018/12/20/ 17:00:50 by aq_1000]
+                eCType = ePre;    // 括号和句末标点符号，方向根据上个字符为准 [2018/12/26/ 15:56:24 by aq_1000]
             }
             else if ((uni >= 0x660) && (uni <= 0x669))
             {
