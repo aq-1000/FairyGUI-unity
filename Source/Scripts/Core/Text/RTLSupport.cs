@@ -284,7 +284,7 @@ namespace FairyGUI
                 else
                     nextChar = '\0';
                 char item = source[j];
-                DirectionType eCType = _GetDirection(item, ePre, nextChar);
+                DirectionType eCType = _GetDirection(item, nextChar, ePre, DirectionType.LTR);
                 if (eCType == DirectionType.RTL)
                 {
                     if (sbRep.Length == 0)
@@ -394,7 +394,7 @@ namespace FairyGUI
                 else
                     nextChar = '\0';
                 char item = source[j];
-                DirectionType eCType = _GetDirection(item, ePre, nextChar);
+                DirectionType eCType = _GetDirection(item, nextChar, ePre, DirectionType.RTL);
                 if (eCType == DirectionType.LTR)
                 {
                     if (sbRep.Length == 0)
@@ -579,14 +579,14 @@ namespace FairyGUI
         }
 
         // 判断字符方向
-        private static DirectionType _GetDirection(char uc, DirectionType ePre, char nextChar)
+        private static DirectionType _GetDirection(char uc, char nextChar, DirectionType ePre, DirectionType eBase)
         {
-            DirectionType eCType = DirectionType.RTL;
+            DirectionType eCType = ePre;
             int uni = uc;
 
             if (_IsBracket(uc) || _IsEndPunctuation(uc, nextChar))
             {
-                eCType = ePre;    // 括号和句末标点符号，方向根据上个字符为准 [2018/12/26/ 15:56:24 by aq_1000]
+                eCType = eBase;    // 括号和句末标点符号，方向根据上个字符为准 [2018/12/26/ 15:56:24 by aq_1000]
             }
             else if ((uni >= 0x660) && (uni <= 0x669))
             {
