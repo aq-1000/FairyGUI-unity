@@ -743,7 +743,7 @@ namespace FairyGUI
 						wordPossible = true;
 					}
 					else if (wordPossible && (ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z' || ch >= '0' && ch <= '9' || ch == '.' 
-                        || ch == '"' || ch == '[' || ch == '('
+                        || ch == '"' || ch == '[' || ch == '(' || ch == '-'
 #if RTL_TEXT_SUPPORT
 						|| (_textDirection != RTLSupport.DirectionType.UNKNOW && RTLSupport.IsArabicLetter(ch))
 #endif
@@ -751,7 +751,7 @@ namespace FairyGUI
 					{
 						if (wordChars == 0)
 							wordStart = line.width;
-						else if (wordChars > 10)
+						else if (wordChars > 12)
 							wordChars = short.MinValue;
 
 						wordChars++;
