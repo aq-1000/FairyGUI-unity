@@ -149,7 +149,8 @@ namespace FairyGUI
 
 		override public void PrepareCharacters(string text)
 		{
-			_font.RequestCharactersInTexture(text, _size, _style);
+            _size = (_size / 2) * 2;    // 向下取偶数，避免出现奇数字号，项目都只用偶数字号，避免字号过多 [2019/1/16/ 16:55:48 by aq_1000]
+            _font.RequestCharactersInTexture(text, _size, _style);
 		}
 
 		override public bool GetGlyphSize(char ch, out float width, out float height)
