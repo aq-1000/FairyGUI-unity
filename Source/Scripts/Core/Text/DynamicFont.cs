@@ -32,7 +32,7 @@ namespace FairyGUI
 			this.canTint = true;
 			this.canOutline = true;
 			this.hasChannel = false;
-			this.keepCrisp = true;
+			this.keepCrisp = false;
 			_lastFontSize = -1;
 
 			if (UIConfig.renderingTextBrighterOnDesktop && !Application.isMobilePlatform)
