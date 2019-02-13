@@ -46,7 +46,7 @@ namespace FairyGUI
 			displayObject.onRemovedFromStage.Add(__onHide);
 			displayObject.onTouchBegin.AddCapture(__touchBegin);
 
-			this.gameObjectName = "Window";
+			this.gameObjectName = "Wnd";
 			SetHome(GRoot.inst);
 		}
 
@@ -76,7 +76,7 @@ namespace FairyGUI
 					_contentPane = value;
 					if (_contentPane != null)
 					{
-						this.gameObjectName = "Window - " + _contentPane.gameObjectName;
+						this.gameObjectName = "Wnd - " + _contentPane.gameObjectName;
 						_contentPane.gameObjectName = "ContentPane";
 
 						AddChild(_contentPane);
@@ -94,7 +94,7 @@ namespace FairyGUI
 					else
 					{
 						_frame = null;
-						this.gameObjectName = "Window";
+						this.gameObjectName = "Wnd";
 					}
 				}
 			}
