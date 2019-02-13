@@ -381,7 +381,7 @@ namespace FairyGUI
                 {
                     var itemName = dropdown.packageItem.name;
                     itemName = itemName.Split("_LTR".ToCharArray())[0];
-                    dropdown.name = string.Format("{0}_{1}", dropdown.packageItem.owner.name, dropdown.packageItem.name);
+                    dropdown.name = string.Format("{0}_{1}", dropdown.packageItem.owner.name, itemName);
                 }
                 _list = dropdown.GetChild("list") as GList;
 				if (_list == null)
