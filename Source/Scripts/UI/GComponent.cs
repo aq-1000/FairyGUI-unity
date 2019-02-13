@@ -1259,9 +1259,13 @@ namespace FairyGUI
 
 		internal void ConstructFromResource(List<GObject> objectPool, int poolIndex)
 		{
-			this.gameObjectName = packageItem.name;
+#if UNITY_EDITOR
+            this.gameObjectName = packageItem.owner.name + " - " + packageItem.name;
+#else
+            this.gameObjectName = packageItem.name;
+#endif
 
-			if (!packageItem.translated)
+            if (!packageItem.translated)
 			{
 				packageItem.translated = true;
 				TranslationHelper.TranslateComponent(packageItem);
