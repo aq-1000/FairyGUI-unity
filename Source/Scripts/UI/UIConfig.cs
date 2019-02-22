@@ -154,7 +154,7 @@ namespace FairyGUI
 		/// <summary>
 		/// 
 		/// </summary>
-		public static float frameTimeForAsyncUIConstruction = 0.002f;
+		public static float frameTimeForAsyncUIConstruction = 0.33f;
 
 		/// <summary>
 		/// if RenderTexture using in paiting mode has depth support.
@@ -222,9 +222,14 @@ namespace FairyGUI
 		/// Indicates whether to draw extra 4 or 8 times to achieve stroke effect for textfield.
 		/// If it is true, that is the 8 times, otherwise it is the 4 times.
 		/// </summary>
-		public static bool enhancedTextOutlineEffect = true;
+		public static bool enhancedTextOutlineEffect = false;
 
-		public enum ConfigKey
+        /// <summary>
+        /// ui语言控制器
+        /// </summary>
+        public static int uiLanguageCtr = 0;
+
+        public enum ConfigKey
 		{
 			DefaultFont,
 			ButtonSound,

@@ -393,7 +393,14 @@ namespace FairyGUI
 			}
 
 			if (parent != null && _pageIds.Count > 0)
-				_selectedIndex = 0;
+            {
+                if (UIConfig.uiLanguageCtr > 0 && name == "UILanguageCtr" && UIConfig.uiLanguageCtr <= _pageIds.Count)
+                {
+                    _selectedIndex = UIConfig.uiLanguageCtr;
+                }
+                else
+                    _selectedIndex = 0;
+            }
 			else
 				_selectedIndex = -1;
 		}
