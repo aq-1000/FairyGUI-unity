@@ -21,6 +21,7 @@ namespace FairyGUI
 		int _lastFontSize;
 		int _size;
 		FontStyle _style;
+		bool _bold;
 
 		static CharacterInfo sTempChar;
 
@@ -30,18 +31,9 @@ namespace FairyGUI
 		{
 			this.name = name;
 			this.canTint = true;
-			this.canOutline = true;
-			this.hasChannel = false;
 			this.keepCrisp = false;
+			this.shader = ShaderConfig.textShader;
 			_lastFontSize = -1;
-
-			if (UIConfig.renderingTextBrighterOnDesktop && !Application.isMobilePlatform)
-			{
-				this.shader = ShaderConfig.textBrighterShader;
-				this.canLight = true;
-			}
-			else
-				this.shader = ShaderConfig.textShader;
 
 			//The fonts in mobile platform have no default bold effect.
 			if (name.ToLower().IndexOf("bold") == -1)
@@ -125,8 +117,10 @@ namespace FairyGUI
 			}
 			if (_size == 0)
 				_size = 1;
+            _size = (_size / 2) * 2;    // 向下取偶数，避免出现奇数字号，项目都只用偶数字号，避免字号过多 [2019/1/16/ 16:55:48 by aq_1000]
 
-			if (format.bold && !customBold)
+			_bold = format.bold;
+			if (_bold && !customBold)
 			{
 				if (format.italic)
 				{
@@ -149,8 +143,7 @@ namespace FairyGUI
 
 		override public void PrepareCharacters(string text)
 		{
-            _size = (_size / 2) * 2;    // 向下取偶数，避免出现奇数字号，项目都只用偶数字号，避免字号过多 [2019/1/16/ 16:55:48 by aq_1000]
-            _font.RequestCharactersInTexture(text, _size, _style);
+			_font.RequestCharactersInTexture(text, _size, _style);
 		}
 
 		override public bool GetGlyphSize(char ch, out float width, out float height)
@@ -171,7 +164,7 @@ namespace FairyGUI
 				width = Mathf.CeilToInt(sTempChar.width);
 #endif
 				height = ri.height;
-				if (customBold)
+				if (_bold && customBold)
 					width++;
 
 				if (keepCrisp)
@@ -217,7 +210,7 @@ namespace FairyGUI
 
 				glyph.width = sTempChar.advance;
 				glyph.height = ri.height;
-				if (customBold)
+				if (_bold && customBold)
 					glyph.width++;
 #else
 				glyph.vert.xMin = sTempChar.vert.xMin;
@@ -244,7 +237,7 @@ namespace FairyGUI
 
 				glyph.width = Mathf.CeilToInt(sTempChar.width);
 				glyph.height = sTempChar.size;
-				if (customBold)
+				if (_bold && customBold)
 					glyph.width++;
 #endif
 				if (keepCrisp)
