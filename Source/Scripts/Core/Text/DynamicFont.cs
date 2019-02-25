@@ -31,6 +31,8 @@ namespace FairyGUI
 		{
 			this.name = name;
 			this.canTint = true;
+			this.canOutline = true;
+			this.hasChannel = false;
 			this.keepCrisp = false;
 			this.shader = ShaderConfig.textShader;
 			_lastFontSize = -1;
