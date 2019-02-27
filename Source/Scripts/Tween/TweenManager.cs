@@ -150,7 +150,11 @@ namespace FairyGUI
 		internal static void Clean()
 		{
 			_tweenerPool.Clear();
-		}
+            _activeTweens = new GTweener[30];
+            _tweenerPool = new List<GTweener>(30);
+            _totalActiveTweens = 0;
+            _inited = false;
+        }
 
 		static void Init()
 		{
