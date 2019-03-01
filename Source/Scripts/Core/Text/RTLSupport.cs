@@ -50,17 +50,19 @@ namespace FairyGUI
         public static bool IsArabicLetter(char ch)
         {
             if (ch >= 0x600 && ch <= 0x6ff)
+            {
+                if ((ch >= 0x660 && ch <= 0x669) || (ch >= 0x6f0 && ch<= 0x6f9)) // 标准阿拉伯语数字和东阿拉伯语数字 [2019/3/1/ 17:45:18 by aq_1000]
+                {
+                    return false;
+                }
                 return true;
-
-            if (ch >= 0x750 && ch <= 0x77f)
+            }                
+            else if (ch >= 0x750 && ch <= 0x77f)
                 return true;
-
-            if (ch >= 0xfb50 && ch <= 0xfc3f)
+            else if (ch >= 0xfb50 && ch <= 0xfc3f)
                 return true;
-
-            if (ch >= 0xfe70 && ch <= 0xfefc)
+            else if (ch >= 0xfe70 && ch <= 0xfefc)
                 return true;
-
             return false;
         }
 
