@@ -71,27 +71,28 @@ namespace FairyGUI
             sbRep.Length = 0;
             foreach (char ch in strNumber)
             {
-                if (ch == 0x66c || ch == ',')   // 去掉逗号
+                int un = ch;
+                if (un == 0x66c || ch == ',')   // 去掉逗号
                     continue;
-                if (ch == 0x660 || ch == 0x6f0)
+                if (un == 0x660 || un == 0x6f0)
                     sbRep.Append('0');
-                if (ch == 0x661 || ch == 0x6f1)
+                if (un == 0x661 || un == 0x6f1)
                     sbRep.Append('1');
-                if (ch == 0x662 || ch == 0x6f2)
+                if (un == 0x662 || un == 0x6f2)
                     sbRep.Append('2');
-                if (ch == 0x663 || ch == 0x6f3)
+                if (un == 0x663 || un == 0x6f3)
                     sbRep.Append('3');
-                if (ch == 0x664 || ch == 0x6f4)
+                if (un == 0x664 || un == 0x6f4)
                     sbRep.Append('4');
-                if (ch == 0x665 || ch == 0x6f5)
+                if (un == 0x665 || un == 0x6f5)
                     sbRep.Append('5');
-                if (ch == 0x666 || ch == 0x6f6)
+                if (un == 0x666 || un == 0x6f6)
                     sbRep.Append('6');
-                if (ch == 0x667 || ch == 0x6f7)
+                if (un == 0x667 || un == 0x6f7)
                     sbRep.Append('7');
-                if (ch == 0x668 || ch == 0x6f8)
+                if (un == 0x668 || un == 0x6f8)
                     sbRep.Append('8');
-                if (ch == 0x669 || ch == 0x6f9)
+                if (un == 0x669 || un == 0x6f9)
                     sbRep.Append('9');
                 else
                     sbRep.Append(ch);
