@@ -93,6 +93,8 @@ namespace FairyGUI
                     sbRep.Append('8');
                 if (ch == 0x669 || ch == 0x6f9)
                     sbRep.Append('9');
+                else
+                    sbRep.Append(ch);
             }
             return sbRep.ToString();
         }
