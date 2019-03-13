@@ -74,25 +74,25 @@ namespace FairyGUI
                 int un = ch;
                 if (un == 0x66c || ch == ',')   // 去掉逗号
                     continue;
-                if (un == 0x660 || un == 0x6f0)
+                else if(un == 0x660 || un == 0x6f0)
                     sbRep.Append('0');
-                if (un == 0x661 || un == 0x6f1)
+                else if(un == 0x661 || un == 0x6f1)
                     sbRep.Append('1');
-                if (un == 0x662 || un == 0x6f2)
+                else if (un == 0x662 || un == 0x6f2)
                     sbRep.Append('2');
-                if (un == 0x663 || un == 0x6f3)
+                else if (un == 0x663 || un == 0x6f3)
                     sbRep.Append('3');
-                if (un == 0x664 || un == 0x6f4)
+                else if (un == 0x664 || un == 0x6f4)
                     sbRep.Append('4');
-                if (un == 0x665 || un == 0x6f5)
+                else if (un == 0x665 || un == 0x6f5)
                     sbRep.Append('5');
-                if (un == 0x666 || un == 0x6f6)
+                else if (un == 0x666 || un == 0x6f6)
                     sbRep.Append('6');
-                if (un == 0x667 || un == 0x6f7)
+                else if (un == 0x667 || un == 0x6f7)
                     sbRep.Append('7');
-                if (un == 0x668 || un == 0x6f8)
+                else if (un == 0x668 || un == 0x6f8)
                     sbRep.Append('8');
-                if (un == 0x669 || un == 0x6f9)
+                else if (un == 0x669 || un == 0x6f9)
                     sbRep.Append('9');
                 else
                     sbRep.Append(ch);
