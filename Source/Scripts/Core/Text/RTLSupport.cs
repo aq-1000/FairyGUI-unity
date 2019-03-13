@@ -51,7 +51,7 @@ namespace FairyGUI
         {
             if (ch >= 0x600 && ch <= 0x6ff)
             {
-                if ((ch >= 0x660 && ch <= 0x669) || (ch >= 0x6f0 && ch<= 0x6f9)) // 标准阿拉伯语数字和东阿拉伯语数字 [2019/3/1/ 17:45:18 by aq_1000]
+                if ((ch >= 0x660 && ch <= 0x66D) || (ch >= 0x6f0 && ch<= 0x6f9)) // 标准阿拉伯语数字和东阿拉伯语数字 [2019/3/1/ 17:45:18 by aq_1000]
                 {
                     return false;
                 }
@@ -64,6 +64,37 @@ namespace FairyGUI
             else if (ch >= 0xfe70 && ch <= 0xfefc)
                 return true;
             return false;
+        }
+
+        public static string ConvertNumber(string strNumber)
+        {
+            sbRep.Length = 0;
+            foreach (char ch in strNumber)
+            {
+                if (ch == 0x66c || ch == ',')   // 去掉逗号
+                    continue;
+                if (ch == 0x660 || ch == 0x6f0)
+                    sbRep.Append('0');
+                if (ch == 0x661 || ch == 0x6f1)
+                    sbRep.Append('1');
+                if (ch == 0x662 || ch == 0x6f2)
+                    sbRep.Append('2');
+                if (ch == 0x663 || ch == 0x6f3)
+                    sbRep.Append('3');
+                if (ch == 0x664 || ch == 0x6f4)
+                    sbRep.Append('4');
+                if (ch == 0x665 || ch == 0x6f5)
+                    sbRep.Append('5');
+                if (ch == 0x666 || ch == 0x6f6)
+                    sbRep.Append('6');
+                if (ch == 0x667 || ch == 0x6f7)
+                    sbRep.Append('7');
+                if (ch == 0x668 || ch == 0x6f8)
+                    sbRep.Append('8');
+                if (ch == 0x669 || ch == 0x6f9)
+                    sbRep.Append('9');
+            }
+            return sbRep.ToString();
         }
 
         public static bool ContainsArabicLetters(string text)
@@ -590,7 +621,7 @@ namespace FairyGUI
             {
                 eCType = eBase;    // 括号和句末标点符号，方向根据上个字符为准 [2018/12/26/ 15:56:24 by aq_1000]
             }
-            else if ((uni >= 0x660) && (uni <= 0x669))
+            else if ((uni >= 0x660) && (uni <= 0x66D))
             {
                 eCType = DirectionType.LTR;
             }
