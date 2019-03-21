@@ -628,9 +628,16 @@ namespace FairyGUI
             {
                 eCType = DirectionType.LTR;
             }
-            else if (IsArabicLetter(uc) || uc == '+' || uc == '-' || uc == '%')
+            else if (IsArabicLetter(uc) || uc == '+' /*|| uc == '-'*/ || uc == '%')
             {
                 eCType = DirectionType.RTL;
+            }
+            else if (uc == '-')
+            {
+                if (char.IsNumber(nextChar))
+                    eCType = DirectionType.LTR;
+                else
+                    eCType = DirectionType.RTL;
             }
             else if (_IsNeutrality(uc))    // 中立方向字符，方向就和上一个字符一样 [2018/3/24 16:03:27 --By aq_1000]
             {
