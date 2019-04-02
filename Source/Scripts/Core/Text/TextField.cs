@@ -744,8 +744,9 @@ namespace FairyGUI
 					}
 					else if (wordPossible && (ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z' || ch >= '0' && ch <= '9' || ch == '.' 
                         || ch == '"' || ch == '[' || ch == '(' || ch == '-' || ch == '\''
+                        || (ch >= 'À' && ch <= 'ÿ') // 法语等增补拉丁字母 [2019/4/2/ 15:39:35 by aq_1000]
 #if RTL_TEXT_SUPPORT
-						|| (_textDirection != RTLSupport.DirectionType.UNKNOW && RTLSupport.IsArabicLetter(ch))
+                        || (_textDirection != RTLSupport.DirectionType.UNKNOW && RTLSupport.IsArabicLetter(ch))
 #endif
 					))
 					{
