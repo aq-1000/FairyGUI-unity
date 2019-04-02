@@ -752,7 +752,7 @@ namespace FairyGUI
 					{
 						if (wordChars == 0)
 							wordStart = line.width;
-						else if (wordChars > 12)
+						else if (wordChars > 16)    // 最长单词扩大到16个字符 [2019/4/2/ 16:13:28 by aq_1000]
 							wordChars = short.MinValue;
 
 						wordChars++;
