@@ -817,7 +817,7 @@ namespace FairyGUI
 					{
 						newLine.charCount = wordChars;
 						newLine.width = line.width - wordStart;
-						newLine.height = line.height;
+						newLine.height = /*line.height*/glyphHeight;
 						newLine.textHeight = line.textHeight;
 
 						line.charCount -= wordChars;
