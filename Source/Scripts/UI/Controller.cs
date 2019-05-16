@@ -306,9 +306,19 @@ namespace FairyGUI
 			{
 				if (_selectedIndex == -1)
 					return null;
-				else
-					return _pageIds[_selectedIndex];
-			}
+                else
+                {
+                    try
+                    {
+                        return _pageIds[_selectedIndex];
+                    }
+                    catch (System.Exception ex)
+                    {
+                        return string.Empty;
+                    }
+                }
+                    ;
+            }
 			set
 			{
 				int i = _pageIds.IndexOf(value);
@@ -394,7 +404,7 @@ namespace FairyGUI
 
 			if (parent != null && _pageIds.Count > 0)
             {
-                if (UIConfig.uiLanguageCtr > 0 && name == "UILanguageCtr" && UIConfig.uiLanguageCtr <= _pageIds.Count)
+                if (UIConfig.uiLanguageCtr > 0 && name == "UILanguageCtr" && UIConfig.uiLanguageCtr < _pageIds.Count)
                 {
                     _selectedIndex = UIConfig.uiLanguageCtr;
                 }
